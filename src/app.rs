@@ -1,4 +1,5 @@
 use eframe::{egui, epi};
+use eframe::epi::egui::Visuals;
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[cfg_attr(feature = "persistence", derive(serde::Deserialize, serde::Serialize))]
@@ -34,6 +35,8 @@ impl epi::App for TemplateApp {
         _frame: &mut epi::Frame<'_>,
         _storage: Option<&dyn epi::Storage>,
     ) {
+        _ctx.set_visuals(Visuals::light());
+        
         // Load previous app state (if any).
         // Note that you must enable the `persistence` feature for this to work.
         #[cfg(feature = "persistence")]
